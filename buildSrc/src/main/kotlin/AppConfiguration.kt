@@ -15,10 +15,6 @@ object AppConfiguration {
     const val jvmTarget = "1.8"
 
     val javaCompatibilityVersion = JavaVersion.VERSION_1_8
-
-    val apiKeyHeader = Field("String", "API_KEY_HEADER", "\"api_key\"")
-    val apiKey = Field("String", "API_KEY", "\"nPUSUTIwiRPQT4s6ljxTP0E5I4TiaTWs\"")
-    val baseUrl = Field("String", "BASE_URL", "\"https://api.giphy.com/v1/\"")
 }
 
 data class Field<T>(val type: String, val name: String, val value: T)

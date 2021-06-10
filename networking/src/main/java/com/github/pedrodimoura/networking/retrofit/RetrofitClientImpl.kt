@@ -1,5 +1,6 @@
-package com.github.pedrodimoura.networking
+package com.github.pedrodimoura.networking.retrofit
 
+import com.github.pedrodimoura.networking.RetrofitClient
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json

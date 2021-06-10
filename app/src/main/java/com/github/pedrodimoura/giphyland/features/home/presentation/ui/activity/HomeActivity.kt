@@ -1,19 +1,13 @@
 package com.github.pedrodimoura.giphyland.features.home.presentation.ui.activity
 
-import android.os.Build
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import coil.EventListener
-import coil.ImageLoader
-import coil.decode.GifDecoder
-import coil.decode.ImageDecoderDecoder
-import coil.load
-import coil.request.ImageRequest
-import coil.request.ImageResult
 import com.github.pedrodimoura.giphyland.databinding.ActivityHomeBinding
 import com.github.pedrodimoura.giphyland.features.home.presentation.vm.HomeViewModel
+import com.github.pedrodimoura.ui.extensions.loadGif
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -29,41 +23,14 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         homeViewModel.fetchTrendingLiveData.observe(this) {
-            if (it.isNotEmpty()) {
-                val gif = it.first()
-
-                val imageLoader = ImageLoader.Builder(applicationContext)
-                    .componentRegistry {
-                        if (Build.VERSION.SDK_INT >= 28) {
-                            add(ImageDecoderDecoder(applicationContext))
-                        } else {
-                            add(GifDecoder())
-                        }
-                    }
-                    .eventListener(object : EventListener {
-                        override fun onStart(request: ImageRequest) {
-                            super.onStart(request)
-                            Log.i("KOIL", "On Start")
-                        }
-                        override fun onError(request: ImageRequest, throwable: Throwable) {
-                            super.onError(request, throwable)
-                            Log.i("KOIL", "On Error $throwable")
-                        }
-
-                        override fun onSuccess(
-                            request: ImageRequest,
-                            metadata: ImageResult.Metadata
-                        ) {
-                            super.onSuccess(request, metadata)
-                            Log.i("KOIL", "Success")
-                        }
-                    })
-                    .build()
-
-                binding.topOneGif.load(gif.imageUrl, imageLoader)
-            }
+            if (it.isNotEmpty())
+                binding.topOneGif.loadGif(it.first().imageUrl)
         }
 
         binding.callNetworkButton.setOnClickListener { homeViewModel.fetchTrending() }
+    }
+
+    companion object {
+        fun newIntent(context: Context) = Intent(context, HomeActivity::class.java)
     }
 }

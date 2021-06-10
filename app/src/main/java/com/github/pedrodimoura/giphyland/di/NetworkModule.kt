@@ -2,8 +2,8 @@ package com.github.pedrodimoura.giphyland.di
 
 import android.util.Log
 import com.github.pedrodimoura.giphyland.BuildConfig
-import com.github.pedrodimoura.networking.HttpClient
-import com.github.pedrodimoura.networking.RetrofitClientImpl
+import com.github.pedrodimoura.networking.RetrofitClient
+import com.github.pedrodimoura.networking.retrofit.RetrofitClientImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -41,21 +41,28 @@ object NetworkModule {
         }
     }
 
+    @LoggingInterceptor
+    @Provides
+    fun providesLoggingInterceptor(): Interceptor {
+        return HttpLoggingInterceptor { Log.i("OK_HTTP_LOGGING", it) }.apply {
+            level = HttpLoggingInterceptor.Level.BODY
+        }
+    }
+
     @Provides
     fun provideOkHttpClient(
         @ApiKeyInterceptor apiKeyInterceptor: Interceptor,
+        @LoggingInterceptor loggingInterceptor: Interceptor,
     ): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(apiKeyInterceptor)
-            .addInterceptor(HttpLoggingInterceptor { Log.i("OK_HTTP_LOGGIN", it) }.apply {
-                level = HttpLoggingInterceptor.Level.BODY
-            })
+            .addInterceptor(loggingInterceptor)
             .build()
     }
 
     @ExperimentalSerializationApi
     @Provides
-    fun provideRetrofitHttpClient(okHttpClient: OkHttpClient): HttpClient =
+    fun provideRetrofitHttpClient(okHttpClient: OkHttpClient): RetrofitClient =
         RetrofitClientImpl(BuildConfig.BASE_URL, okHttpClient)
 
 }

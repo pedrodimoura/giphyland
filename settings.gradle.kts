@@ -1,2 +1,2 @@
 rootProject.name = "Giphyland"
-include(":app", ":networking")
+include(":app", "ui", ":networking", ":navigation")

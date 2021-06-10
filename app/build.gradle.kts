@@ -59,12 +59,11 @@ dependencies {
     implementation(Libs.kotlinStdLib)
 
     implementation(project(LocalLibs.networking))
+    implementation(project(LocalLibs.ui))
+    implementation(project(LocalLibs.navigation))
 
     implementation(Libs.coreKtx)
     implementation(Libs.appCompat)
-
-    implementation(Libs.coil)
-    implementation(Libs.coilGifDecoder)
 
     implementation(Libs.fragmentKtx)
     implementation(Libs.material)
