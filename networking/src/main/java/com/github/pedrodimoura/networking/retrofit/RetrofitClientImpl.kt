@@ -1,14 +1,13 @@
 package com.github.pedrodimoura.networking.retrofit
 
 import com.github.pedrodimoura.networking.RetrofitClient
-import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
-import kotlinx.serialization.ExperimentalSerializationApi
-import kotlinx.serialization.json.Json
+import com.google.gson.FieldNamingPolicy
+import com.google.gson.GsonBuilder
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
-@ExperimentalSerializationApi
 class RetrofitClientImpl(
     private val baseUrl: String,
     private val okHttpClient: OkHttpClient,
@@ -20,11 +19,13 @@ class RetrofitClientImpl(
         Retrofit.Builder()
             .baseUrl(baseUrl)
             .client(okHttpClient)
-            .addConverterFactory(Json {
-                isLenient = true
-                ignoreUnknownKeys = true
-                encodeDefaults = true
-            }.asConverterFactory(contentType))
+            .addConverterFactory(
+                GsonConverterFactory.create(
+                    GsonBuilder()
+                        .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
+                        .create()
+                )
+            )
             .build()
     }
 

@@ -8,7 +8,6 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import kotlinx.serialization.ExperimentalSerializationApi
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -60,7 +59,6 @@ object NetworkModule {
             .build()
     }
 
-    @ExperimentalSerializationApi
     @Provides
     fun provideRetrofitHttpClient(okHttpClient: OkHttpClient): RetrofitClient =
         RetrofitClientImpl(BuildConfig.BASE_URL, okHttpClient)

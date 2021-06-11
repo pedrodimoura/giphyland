@@ -9,8 +9,8 @@ object Version {
     const val material = "1.3.0"
     const val retrofit = "2.9.0"
     const val okHttp = "4.9.1"
-    const val kotlinxSerialization = "1.2.1"
-    const val kotlinxSerializationConverter = "0.8.0"
+    const val gson = "2.8.7"
+    const val gsonRetrofitConverter = "2.9.0"
 
     const val junit = "4.13.2"
     const val extJunit = "1.1.2"

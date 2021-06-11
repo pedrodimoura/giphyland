@@ -18,10 +18,10 @@ object Libs {
     const val retrofit = "com.squareup.retrofit2:retrofit:${Version.retrofit}"
     const val okHttp = "com.squareup.okhttp3:okhttp:${Version.okHttp}"
     const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Version.okHttp}"
-    const val kotlinxSerialization =
-        "org.jetbrains.kotlinx:kotlinx-serialization-json:${Version.kotlinxSerialization}"
-    const val kotlinxSerializationConverter =
-        "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:${Version.kotlinxSerializationConverter}"
+
+    const val gson = "com.google.code.gson:gson:${Version.gson}"
+    const val gsonRetrofitConverter =
+        "com.squareup.retrofit2:converter-gson:${Version.gsonRetrofitConverter}"
 
     const val coil = "io.coil-kt:coil:${Version.coil}"
     const val coilGifDecoder = "io.coil-kt:coil-gif:${Version.coil}"

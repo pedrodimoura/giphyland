@@ -27,7 +27,7 @@ android {
 }
 
 dependencies {
-
+    implementation(kotlin(LocalLibs.kotlinReflect))
     implementation(Libs.kotlinStdLib)
     implementation(Libs.coreKtx)
 
@@ -37,8 +37,8 @@ dependencies {
     api(Libs.loggingInterceptor)
     testImplementation(TestLibs.mockWebServer)
 
-    api(Libs.kotlinxSerialization)
-    api(Libs.kotlinxSerializationConverter)
+    api(Libs.gson)
+    api(Libs.gsonRetrofitConverter)
 
     testImplementation(TestLibs.junit)
     androidTestImplementation(TestLibs.extJunit)
