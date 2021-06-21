@@ -3,7 +3,7 @@ plugins {
     kotlin("android")
     kotlin("kapt")
     id("dagger.hilt.android.plugin")
-    id("kotlinx-serialization")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -81,6 +81,9 @@ dependencies {
     kaptAndroidTest(TestLibs.hiltCompiler)
     testImplementation(TestLibs.hiltAndroidTesting)
     kaptTest(TestLibs.hiltCompiler)
+
+    implementation(Libs.navigationFragmentKtx)
+    implementation(Libs.navigationUiKtx)
 
     // Check if is necessary
     debugImplementation(TestLibs.fragmentTesting)

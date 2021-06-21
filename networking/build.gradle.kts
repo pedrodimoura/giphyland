@@ -1,7 +1,6 @@
 plugins {
     id("com.android.library")
     kotlin("android")
-    id("kotlinx-serialization")
 }
 
 android {
@@ -27,7 +26,6 @@ android {
 }
 
 dependencies {
-    implementation(kotlin(LocalLibs.kotlinReflect))
     implementation(Libs.kotlinStdLib)
     implementation(Libs.coreKtx)
 

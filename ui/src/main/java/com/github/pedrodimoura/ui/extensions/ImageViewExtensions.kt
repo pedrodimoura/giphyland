@@ -18,16 +18,11 @@ fun ImageView.loadGif(url: String) {
 }
 
 internal fun getImageLoaderForGif(context: Context): ImageLoader {
-    return ImageLoader.Builder(context)
-        .componentRegistry {
-            add(getGifDecoder(context))
-        }.build()
+    return ImageLoader.Builder(context).componentRegistry { add(getGifDecoder(context)) }.build()
 }
 
 internal fun getGifDecoder(context: Context): Decoder {
-    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P)
         ImageDecoderDecoder(context)
-    } else {
-        GifDecoder()
-    }
+    else GifDecoder()
 }

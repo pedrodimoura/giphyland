@@ -29,4 +29,11 @@ object Libs {
     // Dagger Hilt
     const val hiltAndroid = "com.google.dagger:hilt-android:${Version.hilt}"
     const val hiltCompiler = "com.google.dagger:hilt-compiler:${Version.hilt}"
+
+    // Navigation
+    const val navigationFragmentKtx =
+        "androidx.navigation:navigation-fragment-ktx:${Version.navigation}"
+    const val navigationUiKtx = "androidx.navigation:navigation-ui-ktx:${Version.navigation}"
+    const val navigationDynamicFeature =
+        "androidx.navigation:navigation-dynamic-features-fragment:${Version.navigation}"
 }

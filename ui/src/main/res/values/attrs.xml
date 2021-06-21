@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="GifCardView">
+        <attr name="gifUrl" format="string" />
+        <attr name="isFavorite" format="boolean" />
+        <attr name="isShareEnabled" format="boolean" />
+    </declare-styleable>
+
+</resources>
